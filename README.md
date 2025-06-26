@@ -38,6 +38,10 @@ Classe utilitária para rastreamento e manipulação centralizada de erros da ap
 
 ---
 
+##COMO UTILIZAR
+git clone https://github.com/Murilo013/FrameworkJava.git
+o aquivo .jar do framework está disponível em dist/frameworkpostgresql.jar
+
 ## 🧪 Exemplo de Uso
 
 ```java
@@ -56,7 +60,7 @@ public class Usuario {
 
 public class Main {
     public static void main(String[] args) {
-        AFDAL.conectdb("meubanco", "usuario", "senha");
+        AFDAL.conectdb("meubanco", "usuario", "senha"); // envie suas propriedades de conexão como nome do banco, usuario e senha
 
         Usuario user = new Usuario();
         user.setId(1);
