@@ -45,31 +45,58 @@ Classe utilitária para rastreamento e manipulação centralizada de erros da ap
 ## 🧪 Exemplo de Uso
 
 ```java
-// Classe de exemplo
-public class Usuario {
-    private int id;
-    private String nome;
+Classe de Exemplo
 
-    // Getters e setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-}
-
-public class Main {
+public class ExemploCRUD {
     public static void main(String[] args) {
-        AFDAL.conectdb("meubanco", "usuario", "senha"); // envie suas propriedades de conexão como nome do banco, usuario e senha
 
-        Usuario user = new Usuario();
-        user.setId(1);
-        user.setNome("Murilo");
+        // Conecta no banco (ajuste nome do banco, usuário e senha)
+        AFDAL.conectdb("nomedobanco", "usuario", "senha");
+        
+        // Cria o objeto Livro e preenche dados
+        Livro livro = new Livro();
+        livro.setTitulo("Tituloteste");
+        livro.setAutor("Autorteste");
+        livro.setEditora("Editorateste");
+        livro.setAnoedicao("2025");
+        livro.setLocalizacao("SP");
+        
+        // 1. Cria a tabela baseada na classe Livro 
+        ALDAL.geraTabela(livro);
+        
+        // 2. Insere o livro no banco
+        ALDAL.set(livro);
+        
+        // 3. Consulta o livro no banco pelo título
+        Livro consulta = new Livro();
+        consulta.setTitulo("Tituloteste");
+        ALDAL.get(consulta);
+        System.out.println("Autor: " + consulta.getAutor());
+        System.out.println("Editora: " + consulta.getEditora());
+        System.out.println("Anoedicao: " + consulta.getAnoedicao());
+        System.out.println("Localizacao: " + consulta.getLocalizacao());
+        
+        // 4. Atualiza o autor do livro
+        Livro dadosAtualizados = new Livro();
+        dadosAtualizados.setAutor("Autor Atualizado");
 
-        ALDAL.set(user); // Insere
-        ALDAL.get(user); // Busca
-        user.setNome("João");
-        ALDAL.update(user, user); // Atualiza
-        ALDAL.delete(user); // Deleta
+        Livro chaves = new Livro();
+        chaves.setTitulo("Tituloteste");  //  localizar o registro para atualizar
+        ALDAL.update(dadosAtualizados, chaves);
+        
+        // 5. Consulta novamente para verificar atualização
+        Livro consultaAtualizada = new Livro();
+        consultaAtualizada.setTitulo("Testetitulo");
+        ALDAL.get(consultaAtualizada);
+        System.out.println("Consulta atualização: " + consultaAtualizada.getAutor());
+        
+        // 6. Deleta o livro pelo título
+        Livro deletar = new Livro();
+        deletar.setTitulo("Tituloteste");
+        ALDAL.delete(deletar);
+                 
+        // Desconecta do banco
+        AFDAL.desconecta();
     }
 }
+
