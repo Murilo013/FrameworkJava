@@ -1,6 +1,6 @@
 # 🧱 FrameworkJava
 
-FrameworkJava é um microframework criado com base nos estudos em Java, com foco na simplicidade e produtividade no desenvolvimento de aplicações Java com acesso a banco de dados PostgreSQL. Ele oferece funcionalidades básicas de **CRUD dinâmico**, utilizando **reflexão** para gerar tabelas, inserir, atualizar, deletar e recuperar objetos diretamente do banco de dados.
+Esse framework foi criado com base nos estudos em Java, com foco na simplicidade e produtividade no desenvolvimento de aplicações Java com acesso a banco de dados PostgreSQL. Ele oferece funcionalidades básicas de **CRUD dinâmico**, utilizando **reflexão** para gerar tabelas, inserir, atualizar, deletar e recuperar objetos diretamente do banco de dados.
 
 ---
 
